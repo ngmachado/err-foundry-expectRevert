@@ -1,0 +1,11 @@
+{
+  "name": "err-foundry-expectRevert",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ngmachado/err-foundry-expectRevert",
+  "author": "Axe <@logicB0x>",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.2"
+  }
+}
