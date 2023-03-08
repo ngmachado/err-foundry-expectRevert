@@ -29,17 +29,24 @@ contract LibraryTest is Test {
 		vm.stopPrank();
 	}
 
-	function testCallShouldRevertAfterExternalCall() public {
+	function testCallShouldRevertAfterCall() public {
 		vm.startPrank(alice);
 		vm.expectRevert(MyLibrary.getBalanceAndRevertError.selector);
 		token.getBalanceAndRevert(alice);
 		vm.stopPrank();
 	}
 
-	function testCallShouldRevertBeforeExternalCall() public {
+	function testCallShouldRevertBeforeCall() public {
 		vm.startPrank(alice);
 		vm.expectRevert(MyLibrary.getBalanceAndRevertError.selector);
-		token.getRevertAndBalance(alice);
+		token.getBalanceAndRevertExternalCall(alice);
+		vm.stopPrank();
+	}
+
+	function testCallWithExternal() public {
+		vm.startPrank(alice);
+		vm.expectRevert(MyLibrary.getBalanceAndRevertError.selector);
+		token.getBalanceAndRevertExternalCall(alice);
 		vm.stopPrank();
 	}
 }

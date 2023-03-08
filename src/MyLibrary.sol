@@ -13,23 +13,29 @@ library MyLibrary {
     error getBalanceAndRevertError();
     error justRevertError();
 
-    function getBalanceAndRevert(IERC20 token, address receiver) internal
+    function getBalanceAndRevert(IERC20 token, address receiver) internal view
     {
         // this will make expectRevert to be call + 1 :(
         uint256 myCrazyBalance = token.balanceOf(receiver);
         revert getBalanceAndRevertError();
     }
 
-    function getRevertAndBalance(IERC20 token, address receiver) internal
+    function getRevertAndBalance(IERC20 token, address receiver) internal view
     {
         // this will make expectRevert call = 1
         revert getBalanceAndRevertError();
         uint256 myCrazyBalance = token.balanceOf(receiver);
     }
 
-    function justRevert(IERC20 token) internal
+    function justRevert(IERC20 token) internal view
     {
         // this will make expectRevert call = 1
         revert justRevertError();
+    }
+
+    function getBalanceAndRevertExternalCall(IERC20 token, address receiver) external view
+    {
+        uint256 myCrazyBalance = token.balanceOf(receiver);
+        revert getBalanceAndRevertError();
     }
 }
