@@ -39,7 +39,7 @@ contract LibraryTest is Test {
 	function testCallShouldRevertBeforeCall() public {
 		vm.startPrank(alice);
 		vm.expectRevert(MyLibrary.getBalanceAndRevertError.selector);
-		token.getBalanceAndRevertExternalCall(alice);
+		token.getRevertAndBalance(alice);
 		vm.stopPrank();
 	}
 
